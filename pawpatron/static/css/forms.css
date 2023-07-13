@@ -1,0 +1,206 @@
+.formulario h3{
+    display: grid;
+    place-items: center;
+    padding-bottom: 20px;
+    color: white;
+    font-weight: bold;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.formulario3 {
+  width: 50%;
+}
+
+
+.popupform {
+    position: relative;
+    display: block;
+    width:100%;
+    height:100%;
+    z-index: 1500;
+    
+  }
+  .popupBtn-input {
+    display:none;
+  }
+  .popupBtn-label {
+    position: relative;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .popupBtn {
+    background-color:white;
+    display:block;
+    z-index:2;
+    width:100%;
+    height:100%;
+    position:relative;
+    text-align:center;
+    border-radius:1vw;
+    transition:background-color .2s, 
+      color .2s;
+    box-shadow:.1em .2em .1em rgba(0,0,0,.5);
+  }
+  .popupBtn:hover {
+    background:#999;
+    color:white;
+  }
+  .popupBtn-input:not(checked) ~ 
+  .popupBtn-label  {
+    opacity:1;
+    transition:.2s;
+    transition-delay:.5s;
+  }
+  .popupBtn-input:checked ~ 
+  .popupBtn-label  {
+    opacity:0;
+    transition:.2s;
+    transition-delay:0s;
+  }
+  
+  
+  .popupBtn-input:not(checked) ~ .popupContainer {
+    pointer-events:none;
+    opacity:0;
+    top:55%;
+    transition:width .2s, 
+      height .2s,
+      opacity .2s,
+      top .2s,
+      display 0s linear .5s;
+    -webkit-transition-delay: .0s;
+    transition-delay: .0s;
+  }
+  .popupBtn-input:checked ~ .popupContainer {
+    pointer-events:auto;
+    display:block;
+    opacity:1;
+    width:50%;
+    height:50%;
+    top: 50%;
+    -webkit-transition-delay: .5s;
+    transition-delay: .5s;
+  }
+  .popupBtn-close {
+    z-index:5;
+    background-color:#999;
+    top:-10px;
+    position:fixed;
+    display:block;
+    right:-10px;
+    box-shadow: .1em .3em .1em rgba(0,0,0,.5);
+    border-radius:.25em;
+    padding:.2em .5em;
+    transition:background-color .2s, 
+      color .2s;
+  }
+  .popupBtn-close:hover {
+    background-color:#ccc;
+    color:black;
+  }
+  .hover-popup {
+    pointer-events:none;
+    position:fixed;
+    display:block;
+    top:-2.5em;
+    width:7em;
+  }
+  .hover-popup-content {
+    background-color:rgba(255, 255, 255, 0.75);
+    color:white;
+    padding:.1em .5em;
+    transform:translateX(-50%);
+  }
+  .hover-tri {
+    fill:black;
+    position:fixed;
+  }
+  .popupBtn-close:not(hover) >.hover-popup,
+  .popupBtn-close:not(hover) >.hover-tri {
+    opacity:0;
+    transform:translateY(20%);
+    transition: opacity .25s, transform .25s;
+    transition-delay:0s;
+  }
+  .popupBtn-close:hover >.hover-popup,
+  .popupBtn-close:hover >.hover-tri {  
+    opacity:1;
+    transform:translateY(-10%);
+    transition-delay:.5s;
+  }
+  .popupBtn-input:not(checked) ~ .popupBtn-close {
+    display:none;
+  }
+  .popupBtn-input:checked ~ .popupBtn-close {
+    display:block;  
+  }
+  
+ 
+  
+  .popupBtn-input:not(checked) ~ .blackout {
+    /*display:none;*/
+    opacity:0;
+    transition:opacity .5s;
+    transition-delay:.25s;
+  }
+  .popupBtn-input:checked ~ .blackout {
+    display:block;
+    opacity:.80;
+    pointer-events:auto;
+    transition-delay:0s;
+  }
+  
+  .popupContainer {
+    
+    color:white;
+    padding: .5em 1em;
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:10px;
+    height:80%;
+    display:block;
+    transform: translate(-50%,-50%);
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, 0.894);
+    z-index:4;
+    border-radius:.25em;
+    border: 10px solid #ccc;
+    backdrop-filter:blur(5px) ;
+    backdrop-filter:opacity(0.5)
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  
+  .popupContent {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 96%;
+    overflow-y: auto;
+    
+  }
+  .form-group input:hover {
+    background-color:  rgb(0, 119, 255);
+    color: white; 
+    font-weight: bold;
+  }
+
+  .form-group input::placeholder {
+    color: #ffffff;
+  }
+  
+  #myButton {
+    display:block;
+    left:50%;
+    top:50%;
+    width:10em;
+    height:4em;
+    padding:1em .5em;
+    transform:translate(-50%,-50%);  
+  }
+  #textFlow {
+    height:75%;
+  }
+

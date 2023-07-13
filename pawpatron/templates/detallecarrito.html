@@ -1,0 +1,49 @@
+{% extends "store.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Compra</title>
+    {% load static %}
+</head>
+<body>
+ <div class="container" style="background: #00B4CC; border-collapse: collapse">
+    <h3>Detalle de Compra</h3>
+    <h6>Fecha: {{ fecha }}</h6>
+    <hr>
+    <h4>Boleta</h4>
+    <p>Código Boleta: {{ boleta }}</p>
+    <p>Usuario: {{ user.username }}</p>
+    <p>Total: ${{ total }}</p>
+    
+    <h4>Detalles de Boleta</h4>
+    <table class="table" style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th>Código Detalle Boleta</th>
+                <th>Código Producto</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in productos %}
+            <tr>
+                <td>{{ item.id_boleta }}</td>
+                <td>{{ item.itemid }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>{{ item.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'descargarBoleta' boleta.id_boleta %}" class="btnclasico2">Descargar Boleta</a>
+
+
+</div>
+</body>
+</html>
+{% endblock %}

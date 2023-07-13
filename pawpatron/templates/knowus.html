@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png'%}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/my-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/api.css'%}">
+    <link rel="stylesheet" href="{% static 'css/store.css'%}">
+    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/ism-2.2.min.js' %}"></script>
+    <script src="{% static 'js/metodos.js' %}"></script>
+    <title>Tiendita PAW PATRÓN</title>
+    
+</head>
+<body style="background: rgb(120, 37, 228)">
+    <div class="clock">
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">:</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">:</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+      </div> 
+    <div class="navbar">  
+        <nav>
+            <li><a href="{% url 'index' %}"></a>
+                    <div><img class="logito2" src="{% static 'img/logo.png' %}" alt="LOGO!"></div>
+            <li><a href="{% url 'index' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="nav-text">Inicio</span>
+                    </div>
+                </a></li>
+            <li>
+                <a href="{% url 'store' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="nav-text">Tienda</span>
+                    </div>
+                </a>
+                <ul class="sub-menus">
+                    <li><a href="#">Collares</a></li>
+                    <li><a href="#">Alimento</a></li>
+                    <li><a href="#">Juguetes</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'knowus' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="nav-text">Contacto</span>
+                    </div>
+                </a></li>
+            
+        </nav>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+            <div class="forlogin">
+                <li class="register">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <a class="nav-text" href="#">Bienvenido {{user.username}}</a>
+                </li>
+                <form class="navitem" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="navlogout" type="submit">Desconectarse</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="forlogin">
+                <ul class="register">
+                    <li class="navitem">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <a class="nav-link" href="{% url 'registrar' %}">Registrar</a>
+                    </li>
+                    <li class="navitem"><a href="{% url 'login' %}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="nav-text">Login</span>
+                        </a></li>
+            </div>
+            {% endif %}
+        </div>
+        <header class="masthead">
+            <div class="container1">
+                <div class="masthead-welcome animate__animated animate__pulse">BIENVENIDO A PAW PATRON</div>
+                            <div class="content-slider">
+                            <div class="slider">
+                                <div class="mask">
+                                <ul>
+                                    <li class="anim1">
+                                    <div class="quote">En Paw Patron, nuestro objetivo es ofrecer productos y servicios de alta calidad para mascotas que mejoren su bienestar y la conexión con sus dueños. Nos esforzamos por ser líderes en la industria de las tiendas de mascotas, proporcionando una experiencia excepcional para nuestros clientes y sus compañeros peludos.</div>
+                                   
+                                    </li>
+                                    <li class="anim2">
+                                    <div class="quote">Queremos ser la tienda de mascotas más confiable y reconocida en nuestra comunidad. Nos esforzamos por tener una amplia variedad de productos y servicios innovadores para mascotas, y ser un lugar donde nuestros clientes puedan encontrar todo lo que necesitan para sus amigos de cuatro patas. Además, deseamos promover la educación y el bienestar animal en nuestra comunidad, ofreciendo eventos y programas educativos para nuestros clientes y sus mascotas.</div>
+                                    
+                                    </li>
+                                    <li class="anim3">
+                                    <div class="quote">En Paw Patron, nos preocupamos por el bienestar de los animales y la conservación del medio ambiente. Nos comprometemos a ofrecer productos respetuosos con el medio ambiente y éticos, y a promover prácticas sostenibles en nuestro negocio. Además, trabajamos con organizaciones locales de rescate y adopción de mascotas para apoyar sus esfuerzos y ayudar a encontrar hogares amorosos para animales necesitados. En resumen, en Paw Patron nos comprometemos a proporcionar productos y servicios de calidad mientras promovemos la responsabilidad y el bienestar animal en nuestra comunidad.</div>
+                                    
+                                    </li>
+                                
+                                </ul>
+                                </div>
+                            </div>
+                            </div>
+            </div> 
+            <div class="bgstarter">
+                <img class="imagen1" id="imagenindex" src="{% static 'image/slides/_u/car9.jpg'%}">
+            </div>     
+        </header>
+        <section class="formulario">
+            <h3> MIRA, MANDANOS TU FEEDBACK AQUI!</h3>
+            <div class="popupform">
+                <input type="checkbox" value="" id="testButton" class="popupBtn-input" />
+        
+                <label for="testButton" class="popupBtn-label" id="myButton">
+                    <div class="popupBtn">
+                        Conocenos!
+                    </div>
+                </label>
+        
+        
+                <div class="popupContainer">
+                    <label for="testButton" class="popupBtn-close">
+                        <div class="hover-popup">
+                            <div class="hover-popup-content">
+                                Apreta para cerrar!
+                            </div>
+                            <svg class="hover-tri">
+                                <polygon points="0 0, 20 0, 10 10" />
+                            </svg>
+                        </div>
+        
+                        X
+                    </label>
+        
+        
+                    <div class="popupContent">
+                        <div class="formulario3">
+                            <h3>Formulario </h3>
+                            <form action="#" method="post" name="datos">
+                                <div class="form-group">
+                                    <label for="rut">Rut: </label>
+                                    <input type="text" id="rut" name="rut" placeholder="Digite su rut.." required
+                                        class="form-control" minlength="10">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="nom">Nombre: </label>
+                                    <input type="text" id="nom" name="nom" placeholder="Digite su nombre.." required
+                                        class="form-control" minlength="3" onchange="upperText(this)">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="apeP">Apellido Paterno: </label>
+                                    <input type="text" id="apeP" name="apeP" placeholder="Digite su apellido paterno.." required
+                                        class="form-control" minlength="3" onchange="upperText(this)">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="apeM">Apellido Materno: </label>
+                                    <input type="text" id="apeM" name="apeM" placeholder="Digite su apellido materno.." required
+                                        class="form-control" minlength="3" onchange="upperText(this)">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="edad">Edad: </label>
+                                    <input type="number" id="edad" name="edad" placeholder="Digite su edad.." required
+                                        class="form-control" min="14" max="110">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="genero">Género</label>
+                                    <select id="genero" class="form-control">
+                                        <option value="0">Seleccione género..</option>
+                                        <option value="1">Mujer</option>
+                                        <option value="2">Hombre</option>
+                                        <option value="3">Otro género</option>
+                                    </select>
+                                </div>
+        
+        
+                                <div class="form-group">
+                                    <textarea id="carta" class="form-control" rows="7" 
+                                        onmouseout="colorBlanco(this)">
+        
+                                                        </textarea>
+                                </div>
+        
+                                <input type="button" value="Enviar" class="btn btn-success">
+                                <input type="reset" value="Otro Ingreso" class="btn btn-warning">
+                            </form>
+                            <div id="error">
+        
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+        </section>
+
+        <section>
+            <div class="container3">
+                <iframe width="1360" height="768" src="https://www.youtube.com/embed/VigrgrBRlug" title="PAW PATRÓN (SUPERPET JAJA), tienda para mascotas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>" 
+                
+            </div>
+        </section>
+    <footer class="footerbkn">
+        <div class="container">
+            <div class="socialwebs">
+              <a href="#"><img class="logitosc1" src="{% static 'img/social/ig-lg.png'%}" alt="LOGO!"></a>
+              <a href="#"><img class="logitosc2" src="{% static 'img/social/fb-lg.png'%}" alt="LOGO!"></a>
+              <a href="#"><img class="logitosc3" src="{% static 'img/social/tw-lg.png'%}" alt="LOGO!"></a>
+            
+            </div>
+              <p class="m-0 text-center">Projecto PROGRAMACION WEB &copy; PAW PATRÓN 2023</p>
+          </div>
+    </footer>
+
+</body>
+</html>

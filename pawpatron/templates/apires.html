@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" href="img/logo.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/my-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/api.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/ism-2.2.min.js' %}"></script>
+    <script src="{% static 'js/metodos.js' %}"></script>
+    <title>ADOPTA</title>
+</head>
+<body class="zinde2" style="background: rgb(120, 37, 228)">
+     <div class="clock">
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">:</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">:</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+      </div> 
+    <div class="navbar">  
+        <nav>
+            <li><a href="{% url 'index' %}"></a>
+                    <div><img class="logito2" src="{% static 'img/logo.png' %}" alt="LOGO!"></div>
+            <li><a href="{% url 'index' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="nav-text">Inicio</span>
+                    </div>
+                </a></li>
+            <li>
+                <a href="{% url 'store' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="nav-text">Tienda</span>
+                    </div>
+                </a>
+                <ul class="sub-menus">
+                    <li><a href="#">Collares</a></li>
+                    <li><a href="#">Alimento</a></li>
+                    <li><a href="#">Juguetes</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'knowus' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="nav-text">Contacto</span>
+                    </div>
+                </a></li>
+            
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+            <li class="log1n">
+                <span class="glyphicon glyphicon-user"></span>
+                <a class="navlink" href="#">Bienvenido {{user.username}}</a>
+            </li>
+            <form class="navitem" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Desconectarse</button>
+            </form>
+            {% else %}
+            <div class="forlogin">
+                <ul class="register">
+                    <li class="navitem">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <a class="nav-link" href="{% url 'registrar' %}">Registrar</a>
+                    </li>
+                    <li class="navitem"><a href="{% url 'login' %}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="nav-text">Login</span>
+                        </a></li>
+            </div>
+            {% endif %}
+        </div>
+    <header class="clock22">
+        <div class="clock">
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">:</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">:</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">0</span>
+          </div> 
+
+        </header>
+    
+    <section class="contenedor-capi">
+        <h2>ADOPTA UN PERRITO UWU</h2>
+        <div class="api-container">
+            <table class="table">               
+                    <thead class="theadclass">         
+                        <tr>
+                            <th>Raza</th>
+                            <th>Criado para</th>
+                            <th>Grupo de raza</th>
+                            <th>Temperamento</th>    
+                            <th>Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data">
+    
+    
+                    </tbody>
+                    
+            </table>
+        </div>
+ 
+    </section>
+    
+    <footer class="footerbkn">
+        
+           
+        <div class="container">
+            <div class="socialwebs">
+                <a href="instagram.com"><img class="logitosc1" src="{% static 'img/social/ig-lg.png'%}" alt="LOGO!"></a>
+                <a href="facebook.com"><img class="logitosc2" src="{% static 'img/social/fb-lg.png'%}" alt="LOGO!"></a>
+                <a href="twitter.com"><img class="logitosc3" src="{% static 'img/social/tw-lg.png'%}" alt="LOGO!"></a>
+            
+            </div>
+              <p class="m-0 text-center">Projecto PROGRAMACION WEB &copy; PAW PATRÓN 2023</p>
+          </div>
+
+          
+    </footer>
+</body>
+</html>

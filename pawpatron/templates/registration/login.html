@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Vehiculo</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png'%}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/my-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/api.css'%}">
+    <link rel="stylesheet" href="{% static 'css/store.css'%}">
+    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/ism-2.2.min.js' %}"></script>
+    <title>Login</title>
+    <style>
+        .forlogin {
+            width: 400px;
+            height: 50px;
+            margin-left: 100px;
+            color: white;
+            
+        }
+        .forlogin li{
+            list-style: none;
+
+        }
+        .forlogin a{
+            color: white;
+            font-weight: bold;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+        }
+
+        .registerform{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            font-weight: bold;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .registerform a {
+            color: white;
+        }
+
+        .cart-button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            top : 30%;
+            left: 55%;
+            z-index: 999;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            }
+            
+          .cart-button:hover {
+            background-color: #0056b3;
+            }
+
+            .forlogin button{
+                color: white;
+                background-color: transparent  ;
+                border: 1px  #fff;
+                font-weight: bold;
+                font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            }
+
+    </style>
+</head>
+<body class="zinde" style="background: rgb(120, 37, 228)">
+ <div class="clock">
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">:</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">:</span>
+        <span class="clock__digit">0</span>
+        <span class="clock__digit">0</span>
+      </div> 
+    <div class="navbar">  
+        <nav>
+            <li><a href="{% url 'index' %}"></a>
+                    <div><img class="logito2" src="{% static 'img/logo.png' %}" alt="LOGO!"></div>
+            <li><a href="{% url 'index' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="nav-text">Inicio</span>
+                    </div>
+                </a></li>
+            <li>
+                <a href="{% url 'store' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="nav-text">Tienda</span>
+                    </div>
+                </a>
+                <ul class="sub-menus">
+                    <li><a href="#">Collares</a></li>
+                    <li><a href="#">Alimento</a></li>
+                    <li><a href="#">Juguetes</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'knowus' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="nav-text">Contacto</span>
+                    </div>
+                </a></li>
+            
+        </nav>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+            <div class="forlogin">
+                <li class="register">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <a class="nav-text" href="#">Bienvenido {{user.username}}</a>
+                </li>
+                <form class="navitem" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="navlogout" type="submit">Desconectarse</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="forlogin">
+                <ul class="register">
+                    <li class="navitem">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <a class="nav-link" href="{% url 'registrar' %}">Registrar</a>
+                    </li>
+                    <li class="navitem"><a href="{% url 'login' %}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="nav-text">Login</span>
+                        </a></li>
+            </div>
+            {% endif %}
+        </div>
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <div class="row">
+            <div >
+                <div class="registerform">
+                    <div class="regbody">
+                        <h2>Ingresa tus credenciales</h2>
+                        <hr>
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p}}
+                            <a href="{% url 'index' %">Ir a Inicio</a>
+                            <input type="submit" value="Ingresar" class="cart-button" style="float:right">
+                        </form>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

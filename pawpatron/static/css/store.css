@@ -1,0 +1,230 @@
+.navbar2 {
+    position: absolute;
+    top: 11%;
+    left: 93%;
+    width: 5%;
+    height: 30em;
+    color: #fff;
+    padding: 10px;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border: 2px white;
+    z-index: 10;
+
+}
+
+
+.navbar2 .nav2g {
+    display:flex;
+    flex-direction: column;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 4.5em;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: #0156ff;
+}
+.navbar2 span {
+    display: flex;
+    left:0.6em;
+}
+.navbar2 a {
+    color: white;
+}
+
+.navbar2 a:hover {
+    color: #00ff80;
+}
+
+
+.productcard_title {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: white;
+
+    
+    
+    
+}
+
+.productcard_price {
+  font-size: 3.1rem;
+  color: white;
+  margin-left: 2em;
+  font-weight: bold;
+}
+
+.productcard_info {
+    color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 15;
+    font-size: 16px;
+    width: 30%;
+    height: auto;
+    text-align: left;
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.popup h2{
+    color: #fff;
+    font-weight: bolder ;
+    margin-left: 1em;
+}
+
+.popupimg {
+    width: 30%;
+    height: 20%;
+    margin-left:34em;
+    margin-top: -31.9em;
+    border-radius: 1em;
+    border: 6px solid #ccc;
+
+}
+
+.cardstore {
+  font-family: 'Heebo';
+  --bg-filter-opacity: 0.5;
+  background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
+  height: 20em;
+  width: 15em;
+  font-size: 2em;
+  color: white;
+  border-radius: 1em;
+  padding: 1em;
+  /*margin: 2em;*/
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 5em -1em black;
+  transition: all, var(--transition-time);
+  position: relative;
+  overflow: hidden;
+  border: 10px solid #ccc;
+  text-decoration: none;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+
+
+
+
+
+.productimage1 {
+    position:absolute;
+    width: 200px;
+    height:200px;
+    margin-left: 0.96rem;
+    margin-bottom: 40%;
+    color: white;
+    border-radius: 1em;
+    border: 10px solid #ccc;
+}
+
+.productwrapper a {
+    text-decoration: none;
+}
+
+.productcard a:visited {
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 9.1%;
+    right: 0;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 100;
+    overflow:hidden;
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(5px);
+    
+  }
+  .overlay:target {
+    visibility: visible;
+    opacity: 1;
+  }
+  .popup {
+    background: #0156ff;
+    border-radius: 1em;
+    border: 10px solid #ccc;
+    max-width: 50%;
+    max-height: 60%;
+    position: absolute;
+    left: 20em;
+    transition: all 2s ease-in-out;
+    z-index:60;
+    overflow:hidden;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  }
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    ;
+    
+  }
+  .popup .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+
+  .search {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    margin-top: -75%;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 5px;
+    height: 2.6em;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #ffffff;
+  }
+  
+  .searchTerm:focus{
+    color: #00B4CC;
+  }
+  
+  .searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  /*Resize the wrap to see the search bar change!*/
+  .wrap{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

@@ -1,0 +1,12 @@
+Detalle de Compra
+Fecha: {{ fecha }}
+
+Código Boleta: {{ boleta.id_boleta }}
+Total: {{ total }}
+
+Productos:
+{% for item in productos %}
+- Código Producto: {{ item.itemid }}
+  Cantidad: {{ item.cantidad }}
+  Subtotal: {{ item.subtotal }}
+{% endfor %}

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png'%}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/store.css'%}">
+    <link rel="stylesheet" href="{% static 'css/my-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/api.css'%}">
+    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link rel="stylesheet" href="{% static 'css/cart.css'%}">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/ism-2.2.min.js' %}"></script>
+    
+
+    <title>Tienda</title>
+    <style>
+        .navbar2 {
+            position: absolute;
+            top: 11%;
+            left: 93%;
+            width: 5%;
+            height: 30em;
+            color: #fff;
+            padding: 10px;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            border: 2px white;
+            z-index: 10;
+        
+        }
+        
+        
+        .navbar2 .nav2g {
+            display:flex;
+            flex-direction: column;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 4.5em;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            color: #0156ff;
+        }
+        .navbar2 span {
+            display: flex;
+            left:0.6em;
+        }
+        .navbar2 a {
+            color: white;
+        }
+        
+        .navbar2 a:hover {
+            color: #00ff80;
+        }
+        
+        
+        .productcard_title {
+          font-size: 2.3rem;
+          font-weight: bold;
+          color: white;
+        
+          
+          
+          
+        }
+        
+        .productcard_price {
+        font-size: 3.1rem;
+        color: white;
+        margin-left: 2em;
+        font-weight: bold;
+        }
+        
+        .productcard_info {
+          color: rgb(255, 255, 255);
+          position: relative;
+          z-index: 15;
+          font-size: 16px;
+          width: 30%;
+          height: auto;
+          text-align: left;
+          margin-top: 2em;
+          margin-left: 2em;
+        }
+        
+        .overlay .popup h2{
+            color: #fff;
+            font-weight: bolder ;
+            margin-left: 1em;
+        }
+        
+        .overlay  .popupimg {
+            width: 30%;
+            height: 20%;
+            margin-left:34em;
+            margin-top: -31.9em;
+            border-radius: 1em;
+            border: 6px solid #ccc;
+        
+        }
+        
+        .cardstore {
+          font-family: 'Heebo';
+          --bg-filter-opacity: 0.5;
+          background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
+          height: 20em;
+          width: 15em;
+          font-size: 2em;
+          color: white;
+          border-radius: 1em;
+          padding: 1em;
+          
+          /*margin: 2em;*/
+          display: flex;
+          align-items: flex-end;
+          background-size: cover;
+          background-position: center;
+          box-shadow: 0 0 5em -1em black;
+          transition: all, var(--transition-time);
+          position: relative;
+          overflow: hidden;
+          border: 10px solid #ccc;
+          text-decoration: none;
+          font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        
+        
+        
+        
+        
+        
+        
+        .productimage1 {
+            position:absolute;
+            width: 80%;
+            height:auto;
+            margin-left: 0.96rem;
+            margin-bottom: 40%;
+            color: white;
+            border-radius: 1em;
+            border: 10px solid #ccc;
+        }
+        
+        .productwrapper a {
+            text-decoration: none;
+        }
+        
+        .productcard a:visited {
+            color: inherit;
+            text-decoration: none;
+        
+        }
+        
+        .overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            width: 100vw;
+            height: 100vw;
+            backdrop-filter: blur(5px);
+            
+          }
+          .overlay:target {
+            visibility: visible;
+            opacity: 1;
+          }
+          .overlay .popup {
+            background: #0156ff;
+            border-radius: 1em;
+            border: 10px solid #ccc;
+            max-width: 65%;
+            max-height: 90%;
+            position: absolute;
+            left: 20em;
+            transition: all 2s ease-in-out;
+            z-index:60;
+            overflow:hidden;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        
+          }
+          .overlay .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            ;
+            
+          }
+          .overlay .popup .content {
+            max-height: 30%;
+            overflow: auto;
+          }
+          .wrap{
+            width: 30%;
+            display: flex;
+            
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+          }
+        
+        
+          .search {
+            width: 90%;
+            height: 100px;
+            
+            display: grid;
+            
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          }
+          
+          
+          .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            height: 2.6em;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #ffffff;
+          }
+          
+          .searchTerm:focus{
+            color: #00B4CC;
+          }
+          
+          .searchButton {
+            position: fixed;
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+          }
+          
+          /*Resize the wrap to see the search bar change!*/
+          
+          .cards-wrapper1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            margin: 0 auto;
+            width: 100vw;
+            height: auto;
+            
+            
+            
+            
+          }
+
+          .cards-wrapper2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-auto-rows: minmax(0, auto);
+            grid-gap: 30px; /* Espacio entre las celdas */
+          }
+          .escalabacan{
+            scale:0.9;
+          }
+
+          .cards-wrapper2 :hover{
+            background-color: #0156ff;
+            border: 20px transparent;
+            border-radius: 2em;
+          }
+
+          .productcard_cart {
+            font-size: 3.1rem;
+            color: white;
+            margin-left: 2em;
+            font-weight: bold;
+            }
+          .cart-button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            }
+            
+          .cart-button:hover {
+            background-color: #0056b3;
+            }
+            .forlogin {
+                width: 400px;
+                height: 50px;
+                margin-left: 100px;
+                color: white;
+                
+            }
+            .forlogin li{
+                list-style: none;
+
+            }
+            .forlogin a{
+                color: white;
+                font-weight: bold;
+                font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+            }
+
+            .forlogin button{
+                color: white;
+                background-color: transparent  ;
+                border: 1px  #fff;
+                font-weight: bold;
+                font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            }
+            .flexmod{
+                display: flex;
+                flex-wrap: wrap;
+                flex-flow: column;
+                position: relative;
+                background-color: #007bff;
+                width: 100px;
+                color: #ffffff;
+                padding: 10px 20px;
+                border: 1px white;
+                border-radius: 2px;
+                font-size: 16px;
+                cursor: pointer;
+                z-index: 999;
+                font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                }
+            .cart-button2{
+                display: grid;
+                grid-auto-flow: column;
+                color: white;
+            }
+            
+            
+                
+
+        
+    </style>
+    
+</head>
+<body class="zinde" style="background: rgb(120, 37, 228)">
+    <div class="wrap"><!--BUSCADOR-->
+        <div class="search">
+            <form action="{% url 'buscar_alimentos' %}" method="GET">
+                <input type="text" class="searchTerm" name="q" placeholder="¿Qué buscas?">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <section><!--TODO L ODE ARRIBA-->
+        <div class="clock">
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">:</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">:</span>
+            <span class="clock__digit">0</span>
+            <span class="clock__digit">0</span>
+        </div> 
+        <section>
+            <div class="navbar">
+                <nav>
+                    <div><img class="logito2" src="{% static 'img/logo.png'%}" alt="LOGO!"></div>
+                    
+                    <li><a href="{% url 'index'%}">
+                            <div>
+                                <span class="glyphicon glyphicon-home"></span>
+                                <span class="nav-text">Inicio</span>
+                            </div>
+                        </a></li>
+                    <li>
+                        <a href="{% url 'store'%}">
+                            <div>
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                <span class="nav-text">Tienda</span>
+                            </div>
+                        </a>
+                        <ul class="sub-menus">
+                            <li><a href="#">Collares</a></li>
+                            <li><a href="#">Alimento</a></li>
+                            <li><a href="#">Juguetes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'knowus'%}">
+                            <div>
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span class="nav-text">Contacto</span>
+                            </div>
+                        </a></li>
+                </nav>
+
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                <div class="forlogin">
+                    <li class="register">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <a class="nav-text" href="#">Bienvenido {{user.username}}</a>
+                    </li>
+                    <form class="navitem" action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="navlogout" type="submit">Desconectarse</button>
+                    </form>
+                </div>
+                {% else %}
+                <div class="forlogin">
+                    <ul class="register">
+                        <li class="navitem">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <a class="nav-link" href="{% url 'registrar' %}">Registrar</a>
+                        </li>
+                        <li class="navitem"><a href="{% url 'login' %}">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <span class="nav-text">Login</span>
+                            </a></li>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+        <section>
+            
+        </section>
+        <section>
+            <div class="navbar2">
+                <nav>
+                    <h4>Filtro Rapido</h4>
+                    <div class="nav2g">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        <a href="#">Collares</a></div>
+                    <div class="nav2g">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        <a href="#">Alimentos</a></div>
+                    <div class="nav2g">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        <a href="#">Juguetes</a></div>
+                    {% if request.user.is_authenticated and request.user.is_superuser %}
+                    <div class="nav2g">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        <a href="{% url 'crear' %}">Crear</a>
+                    </div>
+                    {%endif%}
+                   
+                </nav>
+            </div>
+        </section>
+        <br><br><br>
+    </section>
+    {% block content %}
+
+    {% endblock %}
+    
+    <section class="cards-wrapper1"><!--ITEMS CARD-->
+        {% for alimentos in alimentos %}
+        <div class="cards-wrapper2 escalabacan">
+            <a class="cardstore button" href="#popup{{ alimentos.itemid }}">
+                <img class="productimage1" src="{{ alimentos.imagen.url }}">
+                <div class="productcard_title">{{ alimentos.marca }}</div>
+                <div class="productcard_price">${{ alimentos.precio }}</div>
+            </a>
+            
+            
+           
+            
+        </div>
+        
+        <div id="popup{{ alimentos.itemid }}" class="overlay">
+            <div class="popup">
+                <h2>{{ alimentos.marca }}</h2>
+                <h2 style="font-size: small; margin-left: 4%;">Stock Disponible: {{ alimentos.cantidad_disponible }}</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="productcard_info">{{ alimentos.descripcion }}</div>
+                <a href="{% url 'agregar' alimentos.itemid %}" class="btnclasico">Agregar al carro</a>
+                <img class="popupimg" src="{{ alimentos.imagen.url }}">
+                <div class="productcard_price">${{ alimentos.precio }}</div>
+                <div>
+                    
+                    <div class="flexmod">
+                        {% if request.user.is_superuser %}
+                            <a class="botonplus" href="{% url 'modificar' alimentos.itemid %}">Modificar</a>
+                            <a class="botonplus" href="{% url 'eliminar' alimentos.itemid %}">Eliminar</a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        {% endfor %}
+        {% if alimentos.has_next %}
+            <a href="?page={{ alimentos.next_page_number }}" class="btn btn-outline-primary"style="color: white;">></a>
+        {% endif %}
+        {% if alimentos.has_previous %}
+            <a href="?page={{ alimentos.previous_page_number }}" class="btn btn-outline-primary" style="color: white;"><</a>
+        {% endif %}
+    </section>
+  <section>
+        <!--<button class="cart-button" href="#popup">Carrito</button>-->
+        <div class="cart">
+            <div class="popup3">
+                <table class="cards minimalista-table" style="border: none;">
+                    <thead>
+                        <tr scope="row" class="text-center">
+                        <td colspan="3" style="font-weight:70; font-size:18px; color:rgb(255, 255, 255)">CARRITO</td>
+                        </tr>
+                        <tr>
+                        <th class="masthead-heading text-uppercase">NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th>CANTIDAD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if request.session.carrito.items %}
+                        {% for key, value in request.session.carrito.items %}
+                        <tr>
+                        <td>{{ value.nombre }}</td>
+                        <td>${{ value.precio }}</td>
+                        <td>
+                            {{ value.cantidad }}
+                            <br>
+                            <a href="{% url 'agregar' value.Alimentos_id %}" class="botonplus" >+</a>
+                            <a href="{% url 'restar' value.Alimentos_id %}" class="botonplus" >-</a>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                        <td colspan="3">
+                            <div class="alert alert-info text-center" style="font-weight: 70;">Sin Productos</div>
+                        </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                <p>Impuestos totales (10%): ${{ impuesto }}</p>
+                <p>Costo de Envio(10%): $1200</p>
+                <p>Total General: ${{ total_con_envio}}</p>
+            
+                <div class="col-6">
+                <a href="{% url 'limpiar' %}" class="btnclasico2">Limpiar</a> 
+                <a href="{% url 'generarBoleta' %}" class="btnclasico2">Comprar</a>
+               </div> 
+               <br>
+            
+
+            </div>
+
+        </div>
+    <section>
+        <div id="boletas-container">
+            {% for boleta in boletas %}
+                <p>Fecha: {{ boleta.fechaCompra }}</p>
+                <p>Total: ${{ boleta.total }}</p>
+                <!-- Muestra otros detalles de la boleta -->
+            {% endfor %}
+        </div>
+
+    </section>
+
+    </section>
+        <footer class="footerbkn">
+            <div class="container">
+                <div class="socialwebs">
+                  <a href="#"><img class="logitosc1" src="{% static 'img/social/ig-lg.png'%}" alt="LOGO!"></a>
+                  <a href="#"><img class="logitosc2" src="{% static 'img/social/fb-lg.png'%}" alt="LOGO!"></a>
+                  <a href="#"><img class="logitosc3" src="{% static 'img/social/tw-lg.png'%}" alt="LOGO!"></a>
+                
+                </div>
+                  <p class="m-0 text-center">Projecto PROGRAMACION WEB &copy; PAW PATRÓN 2023</p>
+              </div>
+        </footer>
+    </section> 
+</body>
+</html>

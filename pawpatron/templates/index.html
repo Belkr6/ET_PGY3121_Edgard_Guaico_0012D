@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {% load static %}
+    <link rel="icon" href="img/logo.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/my-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/api.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/ism-2.2.min.js' %}"></script>
+    <title>Tiendita PAW PATRÓN</title>
+    <style>
+      .forlogin {
+        width: 400px;
+        height: 50px;
+        margin-left: 100px;
+        color: white;
+        
+    }
+    .forlogin li{
+        list-style: none;
+
+    }
+    .forlogin a{
+        color: white;
+        font-weight: bold;
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    }
+
+    .forlogin button{
+        color: white;
+        background-color: transparent  ;
+        border: 1px  #fff;
+        font-weight: bold;
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    </style>
+
+</head>
+<body class="zinde" style="background: rgb(120, 37, 228)">
+    <div class="navbar"> 
+     
+        <nav>
+            <li><a href="{% url 'index' %}"></a>
+                    <div><img class="logito2" src="{% static 'img/logo.png' %}" alt="LOGO!"></div>
+            <li><a href="{% url 'index' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="nav-text">Inicio</span>
+                    </div>
+                </a></li>
+            <li>
+                <a href="{% url 'store' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="nav-text">Tienda</span>
+                    </div>
+                </a>
+                <ul class="sub-menus">
+                    <li><a href="#">Collares</a></li>
+                    <li><a href="#">Alimento</a></li>
+                    <li><a href="#">Juguetes</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'knowus' %}">
+                    <div>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="nav-text">Contacto</span>
+                    </div>
+                </a></li>
+            
+        </nav>
+    </div>
+    <div style:"z-index: 999999">
+      {% if user.is_authenticated %}
+      <div class="forlogin">
+          <li class="register">
+              <span class="glyphicon glyphicon-user"></span>
+              <a class="nav-text" href="#">Bienvenido {{user.username}}</a>
+          </li>
+          <form class="navitem" action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class="navlogout" type="submit">Desconectarse</button>
+          </form>
+      </div>
+      {% else %}
+      <div class="forlogin">
+          <ul class="register">
+              <li class="navitem">
+                  <span class="glyphicon glyphicon-user"></span>
+                  <a class="nav-link" href="{% url 'registrar' %}">Registrar</a>
+              </li>
+              <li class="navitem"><a href="{% url 'login' %}">
+                      <span class="glyphicon glyphicon-user"></span>
+                      <span class="nav-text">Login</span>
+                  </a></li>
+      </div>
+      {% endif %}
+  </div>
+    <img class="logito" src="{% static 'img/logo.png'%}" alt="LOGO!">
+    <div class="clock">
+      <span class="clock__digit">0</span>
+      <span class="clock__digit">0</span>
+      <span class="clock__digit">:</span>
+      <span class="clock__digit">0</span>
+      <span class="clock__digit">0</span>
+      <span class="clock__digit">:</span>
+      <span class="clock__digit">0</span>
+      <span class="clock__digit">0</span>
+    </div> 
+    <header class="masthead">
+      
+        <div class="container1">
+              
+            <div class="masthead-subheading animate__animated animate__pulse">BIENVENIDO A NUESTRA TIENDA!</div>
+            <div class="masthead-heading text-uppercase">espero que te encuentres bien</div>
+            <div class="masthead-heading text-uppercase">¡BIENVENIDO A PAW PATRON!</div>   
+            
+            <button  class="btn"><a href="#services">Conocenos</a></button>
+        </div> 
+        <div class="bgstarter">
+            <img class="imagen1" id="imagenindex" src="{% static 'image/slides/_u/car8.jpg'%}">
+        </div>     
+    </header>
+    <section class="apipop">
+      <div class="apicont">
+        <div class="apii">
+          <a class="apibtn" href="{% url 'apires' %}" >ADOPTA UN PERRITO UWU!</a>
+      </div>
+
+        
+    
+      </div>
+    
+    </section>  
+
+        <section class="page-section" id="services">
+        <section class="cards-wrapper">
+            <div class="card-grid-space">
+              
+              <a class="card"  href="#" style="--bg-img: url(/img/petcol1.jpg)">
+                <div>
+                  <h1>Collares</h1>
+                  <p>Bienvenido a nuestra Sección de collares para
+                    mascotas, donde ofrecemos una amplia variedad de opciones para garantizar el bienestar y la
+                    comodidad de tu querida mascota.</p>
+                  
+                  <div class="tags">
+                    <div class="tag">&copyPAW PATRON</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card-grid-space">
+              
+              <a class="card" href="#" style="--bg-img: url(/img/petcol2.jpg)">
+                <div>
+                  <h1>Juguetes</h1>
+                  <p>Bienvenido a nuestra Sección a de juguetes para
+                    mascotas, donde encontrarás una gran selección de juguetes divertidos y seguros para tu amigo
+                    peludo.</p>
+                  
+                  <div class="tags">
+                    <div class="tag">&copyPAW PATRON</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="card-grid-space">
+              
+              <a class="card" href="#" style="--bg-img: url(/img/petcol3.jpg)">
+                <div>
+                  <h1>Alimentos</h1>
+                  <p>Bienvenido a nuestra Sección de alimentos para
+                    mascotas, donde nos dedicamos a ofrecer los mejores alimentos para tus amigos peludos.</p>
+                  
+                  <div class="tags">
+                    <div class="tag">&copyPAW PATRON</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </section>
+        </section>
+
+        <div class="container">
+            <div class="ism-slider" data-transition_type="fade" data-image_fx="zoompan" id="carrusel1">
+                <ol>
+                    <li>
+                        <img src="{% static 'image/slides/_u/car3.jpg'%}">
+                    </li>
+                    <li>
+                        <img src="{% static 'image/slides/_u/car2.jpg'%}">
+                    </li>
+                    <li>
+                        <img src="{% static 'image/slides/_u/car1.jpg'%}">
+        
+                    </li>
+                </ol>
+            </div><br><br><br><br>
+
+        </div>
+  
+         
+    
+    <!-- Footer-->
+    <footer class="footerbkn">
+        
+        
+        <div class="container">
+          <div class="socialwebs">
+            <a href="instagram.com"><img class="logitosc1" src="{% static 'img/social/ig-lg.png'%}" alt="LOGO!"></a>
+            <a href="facebook.com"><img class="logitosc2" src="{% static 'img/social/fb-lg.png'%}" alt="LOGO!"></a>
+            <a href="twitter.com"><img class="logitosc3" src="{% static 'img/social/tw-lg.png'%}" alt="LOGO!"></a>
+          
+          </div>
+            <p class="m-0 text-center">Projecto PROGRAMACION WEB &copy; PAW PATRÓN 2023</p>
+        </div>
+    </footer>
+
+</body>
+</html>
